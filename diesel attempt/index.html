@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Massive Image with Buttons</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #000;
+        }
+
+        .massive-image {
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+        }
+
+        .buttons-container {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .button {
+            width: 200px;
+            height: 200px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            transform-origin: center;
+            transition: transform 0.5s ease;
+        }
+
+        .button img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .button:active {
+            animation: spin 0.5s linear;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="images/pa2.jpg" alt="Massive Background" class="massive-image">
+
+    <div class="buttons-container">
+        <button class="button" onclick="playSound('diesel2.m4a')">
+            <img src="images/pa1.jpg" alt="Button 1">
+        </button>
+        <button class="button" onclick="playSound('dingle2.m4a')">
+            <img src="images/pa3.jpg" alt="Button 2">
+        </button>
+        <button class="button" onclick="playSound('dookie2.m4a')">
+            <img src="images/pa4.jpg" alt="Button 3">
+        </button>
+        <button class="button" onclick="playSound('pizzle2.m4a')">
+            <img src="images/pa5.jpg" alt="Button 4">
+        </button>
+    </div>
+
+    <audio id="audio-player"></audio>
+
+    <script>
+        function playSound(soundFile) {
+            const audio = document.getElementById('audio-player');
+            audio.src = `sounds/${soundFile}`;
+            audio.play();
+        }
+    </script>
+</body>
+</html>
